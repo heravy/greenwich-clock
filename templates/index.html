@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Greenwich Clock</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f7f6;
+            color: #003300;
+            text-align: center;
+            padding: 50px;
+        }
+        h1 {
+            color: #006400;
+        }
+        .clock {
+            background-color: #ffffff;
+            border: 5px solid #004d00;
+            border-radius: 15px;
+            display: inline-block;
+            padding: 20px;
+            margin-top: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .time {
+            font-size: 2em;
+            color: #007600;
+        }
+    </style>
+</head>
+<body>
+    <h1>Greenwich Mean Time (GMT)</h1>
+    <div class="clock">
+        <p class="time" id="time">{{ time }}</p>
+    </div>
+
+    <script>
+        // JavaScript to update the time every second
+        function updateClock() {
+            const elem = document.getElementById("time");
+            const now = new Date();
+            now.setUTCHours(now.getUTCHours(), now.getUTCMinutes(), now.getUTCSeconds());
+            elem.textContent = now.toUTCString().replace(' GMT', '');
+        }
+        setInterval(updateClock, 1000);
+    </script>
+</body>
+</html>
+
